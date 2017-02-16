@@ -22,6 +22,8 @@ func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", heartbeat)
 	router.HandleFunc("/users/new", Users.Post)
+	router.HandleFunc("/users", Users.Get)
+	router.HandleFunc("/users/{user_uuid}", Users.GetOne)
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
